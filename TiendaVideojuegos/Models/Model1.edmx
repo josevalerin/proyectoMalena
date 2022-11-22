@@ -1,0 +1,566 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TiendaVideojuegosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CANTONES">
+          <Key>
+            <PropertyRef Name="ID_CANTON" />
+          </Key>
+          <Property Name="ID_CANTON" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CANTON" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CATEGORIAS">
+          <Key>
+            <PropertyRef Name="ID_CATEGORIA" />
+          </Key>
+          <Property Name="ID_CATEGORIA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_CATEGORIA" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DIRECCIONES">
+          <Key>
+            <PropertyRef Name="ID_DIRECCION" />
+          </Key>
+          <Property Name="ID_DIRECCION" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_PROVINCIA" Type="int" Nullable="false" />
+          <Property Name="ID_CANTON" Type="int" Nullable="false" />
+          <Property Name="DIRECCION" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CODIGO_POSTAL" Type="varchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MARCAS">
+          <Key>
+            <PropertyRef Name="ID_MARCA" />
+          </Key>
+          <Property Name="ID_MARCA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_MARCA" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRODUCTOS">
+          <Key>
+            <PropertyRef Name="ID_PRODUCTO" />
+          </Key>
+          <Property Name="ID_PRODUCTO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_CATEGORIA" Type="int" Nullable="false" />
+          <Property Name="ID_MARCA" Type="int" Nullable="false" />
+          <Property Name="NOMBRE_PRODUCTO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IMAGEN_PRODUCTO" Type="varchar" MaxLength="500" />
+          <Property Name="DESCRIPCION_PRODUCTO" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="CANTIDAD_PRODCUTO" Type="int" Nullable="false" />
+          <Property Name="PRECIO" Type="int" Nullable="false" />
+          <Property Name="DESCUENTO" Type="int" />
+          <Property Name="DESTACADO" Type="bit" />
+        </EntityType>
+        <EntityType Name="PROVINCIAS">
+          <Key>
+            <PropertyRef Name="ID_PROVINCIA" />
+          </Key>
+          <Property Name="ID_PROVINCIA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PROVINCIA" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ROLES">
+          <Key>
+            <PropertyRef Name="ID_ROL" />
+          </Key>
+          <Property Name="ID_ROL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ROL" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="USUARIOS">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_ROL" Type="int" Nullable="false" />
+          <Property Name="ID_DIRECCION" Type="int" />
+          <Property Name="CEDULA" Type="varchar" MaxLength="9" />
+          <Property Name="NOMBRE_USUARIO" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CLAVE" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="NOMBRE_COMPLETO" Type="varchar" MaxLength="50" />
+          <Property Name="CORREO_ELECTRONICO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="VENTA">
+          <Key>
+            <PropertyRef Name="ID_VENTA" />
+          </Key>
+          <Property Name="ID_VENTA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FECHA_VENTA" Type="date" />
+          <Property Name="CANTIDAD" Type="int" Nullable="false" />
+          <Property Name="PRECIO" Type="int" Nullable="false" />
+          <Property Name="ID_PRODUCTO" Type="int" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__DIRECCION__ID_CA__32E0915F">
+          <End Role="CANTONES" Type="Self.CANTONES" Multiplicity="1" />
+          <End Role="DIRECCIONES" Type="Self.DIRECCIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CANTONES">
+              <PropertyRef Name="ID_CANTON" />
+            </Principal>
+            <Dependent Role="DIRECCIONES">
+              <PropertyRef Name="ID_CANTON" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DIRECCION__ID_PR__31EC6D26">
+          <End Role="PROVINCIAS" Type="Self.PROVINCIAS" Multiplicity="1" />
+          <End Role="DIRECCIONES" Type="Self.DIRECCIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVINCIAS">
+              <PropertyRef Name="ID_PROVINCIA" />
+            </Principal>
+            <Dependent Role="DIRECCIONES">
+              <PropertyRef Name="ID_PROVINCIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PRODUCTOS__ID_CA__2A4B4B5E">
+          <End Role="CATEGORIAS" Type="Self.CATEGORIAS" Multiplicity="1" />
+          <End Role="PRODUCTOS" Type="Self.PRODUCTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORIAS">
+              <PropertyRef Name="ID_CATEGORIA" />
+            </Principal>
+            <Dependent Role="PRODUCTOS">
+              <PropertyRef Name="ID_CATEGORIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PRODUCTOS__ID_MA__2B3F6F97">
+          <End Role="MARCAS" Type="Self.MARCAS" Multiplicity="1" />
+          <End Role="PRODUCTOS" Type="Self.PRODUCTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MARCAS">
+              <PropertyRef Name="ID_MARCA" />
+            </Principal>
+            <Dependent Role="PRODUCTOS">
+              <PropertyRef Name="ID_MARCA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USUARIOS__ID_ROL__37A5467C">
+          <End Role="ROLES" Type="Self.ROLES" Multiplicity="1" />
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLES">
+              <PropertyRef Name="ID_ROL" />
+            </Principal>
+            <Dependent Role="USUARIOS">
+              <PropertyRef Name="ID_ROL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VENTA__ID_PRODUC__3B75D760">
+          <End Role="PRODUCTOS" Type="Self.PRODUCTOS" Multiplicity="1" />
+          <End Role="VENTA" Type="Self.VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTOS">
+              <PropertyRef Name="ID_PRODUCTO" />
+            </Principal>
+            <Dependent Role="VENTA">
+              <PropertyRef Name="ID_PRODUCTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VENTA__ID_USUARI__3C69FB99">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="VENTA" Type="Self.VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="VENTA">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TiendaVideojuegosModelStoreContainer">
+          <EntitySet Name="CANTONES" EntityType="Self.CANTONES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CATEGORIAS" EntityType="Self.CATEGORIAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DIRECCIONES" EntityType="Self.DIRECCIONES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MARCAS" EntityType="Self.MARCAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCTOS" EntityType="Self.PRODUCTOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROVINCIAS" EntityType="Self.PROVINCIAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROLES" EntityType="Self.ROLES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VENTA" EntityType="Self.VENTA" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__DIRECCION__ID_CA__32E0915F" Association="Self.FK__DIRECCION__ID_CA__32E0915F">
+            <End Role="CANTONES" EntitySet="CANTONES" />
+            <End Role="DIRECCIONES" EntitySet="DIRECCIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DIRECCION__ID_PR__31EC6D26" Association="Self.FK__DIRECCION__ID_PR__31EC6D26">
+            <End Role="PROVINCIAS" EntitySet="PROVINCIAS" />
+            <End Role="DIRECCIONES" EntitySet="DIRECCIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PRODUCTOS__ID_CA__2A4B4B5E" Association="Self.FK__PRODUCTOS__ID_CA__2A4B4B5E">
+            <End Role="CATEGORIAS" EntitySet="CATEGORIAS" />
+            <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PRODUCTOS__ID_MA__2B3F6F97" Association="Self.FK__PRODUCTOS__ID_MA__2B3F6F97">
+            <End Role="MARCAS" EntitySet="MARCAS" />
+            <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USUARIOS__ID_ROL__37A5467C" Association="Self.FK__USUARIOS__ID_ROL__37A5467C">
+            <End Role="ROLES" EntitySet="ROLES" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VENTA__ID_PRODUC__3B75D760" Association="Self.FK__VENTA__ID_PRODUC__3B75D760">
+            <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+            <End Role="VENTA" EntitySet="VENTA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VENTA__ID_USUARI__3C69FB99" Association="Self.FK__VENTA__ID_USUARI__3C69FB99">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="VENTA" EntitySet="VENTA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TiendaVideojuegosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CANTONES">
+          <Key>
+            <PropertyRef Name="ID_CANTON" />
+          </Key>
+          <Property Name="ID_CANTON" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CANTON" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DIRECCIONES" Relationship="Self.FK__DIRECCION__ID_CA__32E0915F" FromRole="CANTONES" ToRole="DIRECCIONES" />
+        </EntityType>
+        <EntityType Name="CATEGORIAS">
+          <Key>
+            <PropertyRef Name="ID_CATEGORIA" />
+          </Key>
+          <Property Name="ID_CATEGORIA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_CATEGORIA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PRODUCTOS" Relationship="Self.FK__PRODUCTOS__ID_CA__2A4B4B5E" FromRole="CATEGORIAS" ToRole="PRODUCTOS" />
+        </EntityType>
+        <EntityType Name="DIRECCIONES">
+          <Key>
+            <PropertyRef Name="ID_DIRECCION" />
+          </Key>
+          <Property Name="ID_DIRECCION" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_PROVINCIA" Type="Int32" Nullable="false" />
+          <Property Name="ID_CANTON" Type="Int32" Nullable="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CODIGO_POSTAL" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CANTONES" Relationship="Self.FK__DIRECCION__ID_CA__32E0915F" FromRole="DIRECCIONES" ToRole="CANTONES" />
+          <NavigationProperty Name="PROVINCIAS" Relationship="Self.FK__DIRECCION__ID_PR__31EC6D26" FromRole="DIRECCIONES" ToRole="PROVINCIAS" />
+        </EntityType>
+        <EntityType Name="MARCAS">
+          <Key>
+            <PropertyRef Name="ID_MARCA" />
+          </Key>
+          <Property Name="ID_MARCA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_MARCA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PRODUCTOS" Relationship="Self.FK__PRODUCTOS__ID_MA__2B3F6F97" FromRole="MARCAS" ToRole="PRODUCTOS" />
+        </EntityType>
+        <EntityType Name="PRODUCTOS">
+          <Key>
+            <PropertyRef Name="ID_PRODUCTO" />
+          </Key>
+          <Property Name="ID_PRODUCTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_CATEGORIA" Type="Int32" Nullable="false" />
+          <Property Name="ID_MARCA" Type="Int32" Nullable="false" />
+          <Property Name="NOMBRE_PRODUCTO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IMAGEN_PRODUCTO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION_PRODUCTO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CANTIDAD_PRODCUTO" Type="Int32" Nullable="false" />
+          <Property Name="PRECIO" Type="Int32" Nullable="false" />
+          <Property Name="DESCUENTO" Type="Int32" />
+          <Property Name="DESTACADO" Type="Boolean" />
+          <NavigationProperty Name="CATEGORIAS" Relationship="Self.FK__PRODUCTOS__ID_CA__2A4B4B5E" FromRole="PRODUCTOS" ToRole="CATEGORIAS" />
+          <NavigationProperty Name="MARCAS" Relationship="Self.FK__PRODUCTOS__ID_MA__2B3F6F97" FromRole="PRODUCTOS" ToRole="MARCAS" />
+          <NavigationProperty Name="VENTA" Relationship="Self.FK__VENTA__ID_PRODUC__3B75D760" FromRole="PRODUCTOS" ToRole="VENTA" />
+        </EntityType>
+        <EntityType Name="PROVINCIAS">
+          <Key>
+            <PropertyRef Name="ID_PROVINCIA" />
+          </Key>
+          <Property Name="ID_PROVINCIA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PROVINCIA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DIRECCIONES" Relationship="Self.FK__DIRECCION__ID_PR__31EC6D26" FromRole="PROVINCIAS" ToRole="DIRECCIONES" />
+        </EntityType>
+        <EntityType Name="ROLES">
+          <Key>
+            <PropertyRef Name="ID_ROL" />
+          </Key>
+          <Property Name="ID_ROL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ROL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.FK__USUARIOS__ID_ROL__37A5467C" FromRole="ROLES" ToRole="USUARIOS" />
+        </EntityType>
+        <EntityType Name="USUARIOS">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_ROL" Type="Int32" Nullable="false" />
+          <Property Name="ID_DIRECCION" Type="Int32" />
+          <Property Name="CEDULA" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE_USUARIO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CLAVE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE_COMPLETO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CORREO_ELECTRONICO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ROLES" Relationship="Self.FK__USUARIOS__ID_ROL__37A5467C" FromRole="USUARIOS" ToRole="ROLES" />
+          <NavigationProperty Name="VENTA" Relationship="Self.FK__VENTA__ID_USUARI__3C69FB99" FromRole="USUARIOS" ToRole="VENTA" />
+        </EntityType>
+        <EntityType Name="VENTA">
+          <Key>
+            <PropertyRef Name="ID_VENTA" />
+          </Key>
+          <Property Name="ID_VENTA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FECHA_VENTA" Type="DateTime" Precision="0" />
+          <Property Name="CANTIDAD" Type="Int32" Nullable="false" />
+          <Property Name="PRECIO" Type="Int32" Nullable="false" />
+          <Property Name="ID_PRODUCTO" Type="Int32" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PRODUCTOS" Relationship="Self.FK__VENTA__ID_PRODUC__3B75D760" FromRole="VENTA" ToRole="PRODUCTOS" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.FK__VENTA__ID_USUARI__3C69FB99" FromRole="VENTA" ToRole="USUARIOS" />
+        </EntityType>
+        <Association Name="FK__DIRECCION__ID_CA__32E0915F">
+          <End Role="CANTONES" Type="Self.CANTONES" Multiplicity="1" />
+          <End Role="DIRECCIONES" Type="Self.DIRECCIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CANTONES">
+              <PropertyRef Name="ID_CANTON" />
+            </Principal>
+            <Dependent Role="DIRECCIONES">
+              <PropertyRef Name="ID_CANTON" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PRODUCTOS__ID_CA__2A4B4B5E">
+          <End Role="CATEGORIAS" Type="Self.CATEGORIAS" Multiplicity="1" />
+          <End Role="PRODUCTOS" Type="Self.PRODUCTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORIAS">
+              <PropertyRef Name="ID_CATEGORIA" />
+            </Principal>
+            <Dependent Role="PRODUCTOS">
+              <PropertyRef Name="ID_CATEGORIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DIRECCION__ID_PR__31EC6D26">
+          <End Role="PROVINCIAS" Type="Self.PROVINCIAS" Multiplicity="1" />
+          <End Role="DIRECCIONES" Type="Self.DIRECCIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVINCIAS">
+              <PropertyRef Name="ID_PROVINCIA" />
+            </Principal>
+            <Dependent Role="DIRECCIONES">
+              <PropertyRef Name="ID_PROVINCIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PRODUCTOS__ID_MA__2B3F6F97">
+          <End Role="MARCAS" Type="Self.MARCAS" Multiplicity="1" />
+          <End Role="PRODUCTOS" Type="Self.PRODUCTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MARCAS">
+              <PropertyRef Name="ID_MARCA" />
+            </Principal>
+            <Dependent Role="PRODUCTOS">
+              <PropertyRef Name="ID_MARCA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VENTA__ID_PRODUC__3B75D760">
+          <End Role="PRODUCTOS" Type="Self.PRODUCTOS" Multiplicity="1" />
+          <End Role="VENTA" Type="Self.VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTOS">
+              <PropertyRef Name="ID_PRODUCTO" />
+            </Principal>
+            <Dependent Role="VENTA">
+              <PropertyRef Name="ID_PRODUCTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USUARIOS__ID_ROL__37A5467C">
+          <End Role="ROLES" Type="Self.ROLES" Multiplicity="1" />
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLES">
+              <PropertyRef Name="ID_ROL" />
+            </Principal>
+            <Dependent Role="USUARIOS">
+              <PropertyRef Name="ID_ROL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VENTA__ID_USUARI__3C69FB99">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="VENTA" Type="Self.VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="ID_USUARIO" />
+            </Principal>
+            <Dependent Role="VENTA">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TiendaVideojuegosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CANTONES" EntityType="Self.CANTONES" />
+          <EntitySet Name="CATEGORIAS" EntityType="Self.CATEGORIAS" />
+          <EntitySet Name="DIRECCIONES" EntityType="Self.DIRECCIONES" />
+          <EntitySet Name="MARCAS" EntityType="Self.MARCAS" />
+          <EntitySet Name="PRODUCTOS" EntityType="Self.PRODUCTOS" />
+          <EntitySet Name="PROVINCIAS" EntityType="Self.PROVINCIAS" />
+          <EntitySet Name="ROLES" EntityType="Self.ROLES" />
+          <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" />
+          <EntitySet Name="VENTA" EntityType="Self.VENTA" />
+          <AssociationSet Name="FK__DIRECCION__ID_CA__32E0915F" Association="Self.FK__DIRECCION__ID_CA__32E0915F">
+            <End Role="CANTONES" EntitySet="CANTONES" />
+            <End Role="DIRECCIONES" EntitySet="DIRECCIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PRODUCTOS__ID_CA__2A4B4B5E" Association="Self.FK__PRODUCTOS__ID_CA__2A4B4B5E">
+            <End Role="CATEGORIAS" EntitySet="CATEGORIAS" />
+            <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DIRECCION__ID_PR__31EC6D26" Association="Self.FK__DIRECCION__ID_PR__31EC6D26">
+            <End Role="PROVINCIAS" EntitySet="PROVINCIAS" />
+            <End Role="DIRECCIONES" EntitySet="DIRECCIONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PRODUCTOS__ID_MA__2B3F6F97" Association="Self.FK__PRODUCTOS__ID_MA__2B3F6F97">
+            <End Role="MARCAS" EntitySet="MARCAS" />
+            <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VENTA__ID_PRODUC__3B75D760" Association="Self.FK__VENTA__ID_PRODUC__3B75D760">
+            <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+            <End Role="VENTA" EntitySet="VENTA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USUARIOS__ID_ROL__37A5467C" Association="Self.FK__USUARIOS__ID_ROL__37A5467C">
+            <End Role="ROLES" EntitySet="ROLES" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VENTA__ID_USUARI__3C69FB99" Association="Self.FK__VENTA__ID_USUARI__3C69FB99">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="VENTA" EntitySet="VENTA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TiendaVideojuegosModelStoreContainer" CdmEntityContainer="TiendaVideojuegosEntities">
+          <EntitySetMapping Name="CANTONES">
+            <EntityTypeMapping TypeName="TiendaVideojuegosModel.CANTONES">
+              <MappingFragment StoreEntitySet="CANTONES">
+                <ScalarProperty Name="ID_CANTON" ColumnName="ID_CANTON" />
+                <ScalarProperty Name="CANTON" ColumnName="CANTON" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CATEGORIAS">
+            <EntityTypeMapping TypeName="TiendaVideojuegosModel.CATEGORIAS">
+              <MappingFragment StoreEntitySet="CATEGORIAS">
+                <ScalarProperty Name="ID_CATEGORIA" ColumnName="ID_CATEGORIA" />
+                <ScalarProperty Name="NOMBRE_CATEGORIA" ColumnName="NOMBRE_CATEGORIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DIRECCIONES">
+            <EntityTypeMapping TypeName="TiendaVideojuegosModel.DIRECCIONES">
+              <MappingFragment StoreEntitySet="DIRECCIONES">
+                <ScalarProperty Name="ID_DIRECCION" ColumnName="ID_DIRECCION" />
+                <ScalarProperty Name="ID_PROVINCIA" ColumnName="ID_PROVINCIA" />
+                <ScalarProperty Name="ID_CANTON" ColumnName="ID_CANTON" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="CODIGO_POSTAL" ColumnName="CODIGO_POSTAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MARCAS">
+            <EntityTypeMapping TypeName="TiendaVideojuegosModel.MARCAS">
+              <MappingFragment StoreEntitySet="MARCAS">
+                <ScalarProperty Name="ID_MARCA" ColumnName="ID_MARCA" />
+                <ScalarProperty Name="NOMBRE_MARCA" ColumnName="NOMBRE_MARCA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTOS">
+            <EntityTypeMapping TypeName="TiendaVideojuegosModel.PRODUCTOS">
+              <MappingFragment StoreEntitySet="PRODUCTOS">
+                <ScalarProperty Name="ID_PRODUCTO" ColumnName="ID_PRODUCTO" />
+                <ScalarProperty Name="ID_CATEGORIA" ColumnName="ID_CATEGORIA" />
+                <ScalarProperty Name="ID_MARCA" ColumnName="ID_MARCA" />
+                <ScalarProperty Name="NOMBRE_PRODUCTO" ColumnName="NOMBRE_PRODUCTO" />
+                <ScalarProperty Name="IMAGEN_PRODUCTO" ColumnName="IMAGEN_PRODUCTO" />
+                <ScalarProperty Name="DESCRIPCION_PRODUCTO" ColumnName="DESCRIPCION_PRODUCTO" />
+                <ScalarProperty Name="CANTIDAD_PRODCUTO" ColumnName="CANTIDAD_PRODCUTO" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="DESCUENTO" ColumnName="DESCUENTO" />
+                <ScalarProperty Name="DESTACADO" ColumnName="DESTACADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROVINCIAS">
+            <EntityTypeMapping TypeName="TiendaVideojuegosModel.PROVINCIAS">
+              <MappingFragment StoreEntitySet="PROVINCIAS">
+                <ScalarProperty Name="ID_PROVINCIA" ColumnName="ID_PROVINCIA" />
+                <ScalarProperty Name="PROVINCIA" ColumnName="PROVINCIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROLES">
+            <EntityTypeMapping TypeName="TiendaVideojuegosModel.ROLES">
+              <MappingFragment StoreEntitySet="ROLES">
+                <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+                <ScalarProperty Name="ROL" ColumnName="ROL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIOS">
+            <EntityTypeMapping TypeName="TiendaVideojuegosModel.USUARIOS">
+              <MappingFragment StoreEntitySet="USUARIOS">
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+                <ScalarProperty Name="ID_DIRECCION" ColumnName="ID_DIRECCION" />
+                <ScalarProperty Name="CEDULA" ColumnName="CEDULA" />
+                <ScalarProperty Name="NOMBRE_USUARIO" ColumnName="NOMBRE_USUARIO" />
+                <ScalarProperty Name="CLAVE" ColumnName="CLAVE" />
+                <ScalarProperty Name="NOMBRE_COMPLETO" ColumnName="NOMBRE_COMPLETO" />
+                <ScalarProperty Name="CORREO_ELECTRONICO" ColumnName="CORREO_ELECTRONICO" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VENTA">
+            <EntityTypeMapping TypeName="TiendaVideojuegosModel.VENTA">
+              <MappingFragment StoreEntitySet="VENTA">
+                <ScalarProperty Name="ID_VENTA" ColumnName="ID_VENTA" />
+                <ScalarProperty Name="FECHA_VENTA" ColumnName="FECHA_VENTA" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="ID_PRODUCTO" ColumnName="ID_PRODUCTO" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

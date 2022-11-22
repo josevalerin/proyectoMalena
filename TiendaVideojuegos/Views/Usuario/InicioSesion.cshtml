@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "InicioSesion";
+    Layout = "~/Views/Shared/formUsuario.cshtml";
+}
+
+<div class="Formulario-encabezado">
+    <h2>Bienvenido de nuevo</h2>
+    <h4>Inicia sesion para relizar tus compras</h4>
+</div>
+<form class="Formulario-Contenido">
+    <input type="email" placeholder="Correo electronico">
+    <input type="password" placeholder="Contraseña">
+    <button>Iniciar sesion</button>
+    <p><a>@Html.ActionLink("crea una cuenta", "Registro", "Usuario")</a></p>
+</form>
+
+

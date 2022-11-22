@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="37dc87d7e6114a9a89d87642004f8698" Name="Diagram1">
+        <EntityTypeShape EntityType="TiendaVideojuegosModel.CANTONES" Width="1.5" PointX="5.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaVideojuegosModel.CATEGORIAS" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaVideojuegosModel.DIRECCIONES" Width="1.5" PointX="8" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaVideojuegosModel.MARCAS" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaVideojuegosModel.PRODUCTOS" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaVideojuegosModel.PROVINCIAS" Width="1.5" PointX="5.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaVideojuegosModel.ROLES" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaVideojuegosModel.USUARIOS" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TiendaVideojuegosModel.VENTA" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="TiendaVideojuegosModel.FK__DIRECCION__ID_CA__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaVideojuegosModel.FK__PRODUCTOS__ID_CA__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaVideojuegosModel.FK__DIRECCION__ID_PR__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaVideojuegosModel.FK__PRODUCTOS__ID_MA__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaVideojuegosModel.FK__VENTA__ID_PRODUC__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaVideojuegosModel.FK__USUARIOS__ID_ROL__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="TiendaVideojuegosModel.FK__VENTA__ID_USUARI__3C69FB99" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

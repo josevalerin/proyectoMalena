@@ -1,0 +1,300 @@
+﻿:root {
+    --color-negro: #000000;
+    --color-blanco: #F5F3F7;
+    --color-gris: #E1E1E1;
+    --color-rojo-1: #F23030;
+    --color-rojo-2: #F22222;
+    --color-rojo-3: #D90404;
+    --color-rojo-4: #BF0404;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Encabezado */
+.Encabezado {
+    color: var(--color-blanco);
+    background: #780206;
+    background: -webkit-linear-gradient(to right, #061161, #780206);
+    background: linear-gradient(to right, #061161, #780206);
+    height: 100px;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+#logo {
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+.Encabezado a {
+    font-size: 20px;
+    margin: 0 20px;
+    color: var(--color-blanco);
+    text-decoration: none;
+}
+
+    .Encabezado a:hover {
+        color: var(--color-rojo-2);
+    }
+
+/* Inicio sesio | Registro */
+
+.Formulario {
+    display: flex;
+    height: 100vh;
+}
+
+.Formulario-inputs {
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px;
+    background: #fff;
+    width: 400px;
+    text-align: center;
+    align-items: center;
+}
+
+.Formulario-imagen {
+    flex: 1;
+    background-color: black;
+    background-image: url(../Imagenes/pexels-lucie-liz-3165335.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.Formulario-encabezado > h2 {
+    margin: 0;
+    color: #b92b27;
+}
+
+.Formulario-encabezado > h4 {
+    margin-top: 10px;
+    font-weight: normal;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.Formulario-Contenido {
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+    .Formulario-Contenido > p > a {
+        color: rgba(0, 0, 0, 0.4);
+        font-size: 14px;
+    }
+
+        .Formulario-Contenido > p > a:hover {
+            color: #b92b27;
+            font-size: 16px;
+        }
+
+    .Formulario-Contenido input {
+        height: 46px;
+        width: 300px;
+        padding: 0 16px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        outline: 0;
+        margin-top: 20px;
+    }
+
+    .Formulario-Contenido > button {
+        padding: 12px 10px;
+        border: 0;
+        width: 300px;
+        background: #b92b27;
+        background: -webkit-linear-gradient(to right, #1565C0, #b92b27);
+        background: linear-gradient(to right, #1565C0, #b92b27);
+        border-radius: 5px;
+        margin-top: 10px;
+        color: #fff;
+        letter-spacing: 1px;
+    }
+
+/* Pagina principal */
+
+.Contenido {
+    z-index: 1;
+}
+
+.Descuentos,
+.Destacados-categorias {
+    margin-top: 102px;
+    flex-wrap: wrap;
+}
+
+.Producto {
+    margin: 5px;
+    word-wrap: break-word;
+    background: var(--color-gris);
+    border: none;
+    border-radius: 15px;
+    text-align: center;
+    width: 250px;
+    height: 200px;
+}
+
+    .Producto img {
+        border-radius: 15px 15px 0 0;
+        object-fit: cover;
+        width: 250px;
+        height: 150px;
+    }
+
+.Destacados-categorias {
+    border-right: var(--color-gris) solid 1px;
+    padding: 0;
+}
+
+.centrar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Producto-descuento {
+    margin: 10px;
+    word-wrap: break-word;
+    background: var(--color-gris);
+    border: none;
+    border-radius: 15px;
+    text-align: center;
+    width: 75%;
+    height: 250px;
+}
+
+    .Producto-descuento img {
+        border-radius: 15px 15px 0 0;
+        object-fit: cover;
+        width: 100%;
+        height: 180px;
+    }
+
+.Destacado-card {
+    border: none;
+    width: 98%;
+    margin: 20px 0;
+    text-align: center;
+    word-wrap: break-word;
+    position: relative;
+    text-align: center;
+    z-index: 0;
+}
+
+.Destacado-card-texto {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 25px;
+    color: #fff;
+}
+
+.Destacado-card img {
+    height: 400px;
+    width: 98%;
+    border-radius: 15px;
+    object-fit: cover;
+    border: none;
+}
+
+.categorias {
+    width: 100%;
+    margin: 20px 0;
+    padding: 20px 0;
+    border-top: var(--color-gris) 1px solid;
+}
+
+/* Pagina Administracion */
+.admin-contenido {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.tabla {
+    background: var(--color-blanco);
+    border-radius: 15px;
+    border: none;
+    width: max-content;
+    height: max-content;
+    padding: 25px;
+}
+
+.Menu-Lateral {
+    height: 100%;
+    width: 160px;
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    background: #c31432;
+    background: -webkit-linear-gradient(to bottom, #240b36, #c31432);
+    background: linear-gradient(to bottom, #240b36, #c31432);
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+    .Menu-Lateral h1 {
+        padding: 5px 8px 20px 16px;
+        color: var(--color-blanco);
+        font-weight: 200;
+        font-size: 25px;
+    }
+
+    .Menu-Lateral a {
+        padding: 10px 8px 10px 16px;
+        text-decoration: none;
+        font-size: 15px;
+        color: var(--color-blanco);
+        display: block;
+        border-top: solid rgba(255, 255, 255, 0.527) 1px;
+    }
+
+        .Menu-Lateral a:hover {
+            color: var(--color-rojo-1);
+        }
+
+.main {
+    margin-left: 160px;
+    padding: 0px 10px;
+}
+
+.pie-pagina {
+    background: #c31432;
+    background: -webkit-linear-gradient(to right, #240b36, #c31432);
+    background: linear-gradient(to right, #240b36, #c31432);
+    color: var(--color-blanco);
+    font-size: 15px;
+}
+
+    .pie-pagina a {
+        color: var(--color-blanco);
+        font-size: 15px;
+        text-decoration: none;
+    }
+
+        .pie-pagina a:hover {
+            color: var(--color-rojo-1);
+        }
+
+.pie-pagina-encabezado {
+    padding: 50px 0 25px 0;
+}
+
+    .pie-pagina-encabezado h4 {
+        font-size: 25px;
+        font-weight: 400;
+    }
