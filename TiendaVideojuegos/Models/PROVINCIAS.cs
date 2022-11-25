@@ -17,12 +17,15 @@ namespace TiendaVideojuegos.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PROVINCIAS()
         {
+            this.CANTONES = new HashSet<CANTONES>();
             this.DIRECCIONES = new HashSet<DIRECCIONES>();
         }
     
         public int ID_PROVINCIA { get; set; }
         public string PROVINCIA { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CANTONES> CANTONES { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DIRECCIONES> DIRECCIONES { get; set; }
     }

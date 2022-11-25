@@ -1,0 +1,74 @@
+﻿@model TiendaVideojuegos.Models.PRODUCTOS
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container text-center form">
+        <div class="row form-body">
+            <div class="col">
+                <h2>Editar Producto</h2>
+            </div>
+        </div>
+        <div class="row  form-body">
+            <div class="col Formulario-admin-contenido">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.ID_PRODUCTO)
+
+                @Html.LabelFor(model => model.NOMBRE_PRODUCTO, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.NOMBRE_PRODUCTO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NOMBRE_PRODUCTO, "", new { @class = "text-danger" })
+
+                @Html.LabelFor(model => model.IMAGEN_PRODUCTO, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.IMAGEN_PRODUCTO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.IMAGEN_PRODUCTO, "", new { @class = "text-danger" })
+
+                @Html.LabelFor(model => model.DESCRIPCION_PRODUCTO, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.DESCRIPCION_PRODUCTO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DESCRIPCION_PRODUCTO, "", new { @class = "text-danger" })
+
+                @Html.LabelFor(model => model.CANTIDAD_PRODCUTO, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.CANTIDAD_PRODCUTO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CANTIDAD_PRODCUTO, "", new { @class = "text-danger" })
+
+                @Html.LabelFor(model => model.DESTACADO, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.DESTACADO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DESTACADO, "", new { @class = "text-danger" })
+
+
+            </div>
+            <div class="col Formulario-admin-contenido">
+                @Html.LabelFor(model => model.PRECIO, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.PRECIO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PRECIO, "", new { @class = "text-danger" })
+
+                @Html.LabelFor(model => model.DESCUENTO, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.DESCUENTO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DESCUENTO, "", new { @class = "text-danger" })
+
+                @Html.LabelFor(model => model.ID_MARCA, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.DropDownList("ID_MARCA", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ID_MARCA, "", new { @class = "text-danger" })
+
+                @Html.LabelFor(model => model.ID_CATEGORIA, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.DropDownList("ID_CATEGORIA", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ID_CATEGORIA, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <div class="row form-body">
+            <div class="col">
+                <button class="btn btn-success">Agregar</button>
+                
+            </div>
+        </div>
+    </div>
+}
+
+<button class="btn btn-danger">
+    @Html.ActionLink("Cancelar", "Index")
+</button>

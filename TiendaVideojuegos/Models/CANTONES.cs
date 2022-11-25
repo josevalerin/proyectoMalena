@@ -21,8 +21,10 @@ namespace TiendaVideojuegos.Models
         }
     
         public int ID_CANTON { get; set; }
+        public int ID_PROVINCIA { get; set; }
         public string CANTON { get; set; }
     
+        public virtual PROVINCIAS PROVINCIAS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DIRECCIONES> DIRECCIONES { get; set; }
     }

@@ -10,6 +10,7 @@
             <PropertyRef Name="ID_CANTON" />
           </Key>
           <Property Name="ID_CANTON" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_PROVINCIA" Type="int" Nullable="false" />
           <Property Name="CANTON" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="CATEGORIAS">
@@ -45,7 +46,7 @@
           <Property Name="ID_MARCA" Type="int" Nullable="false" />
           <Property Name="NOMBRE_PRODUCTO" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="IMAGEN_PRODUCTO" Type="varchar" MaxLength="500" />
-          <Property Name="DESCRIPCION_PRODUCTO" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="DESCRIPCION_PRODUCTO" Type="varchar" MaxLength="100" />
           <Property Name="CANTIDAD_PRODCUTO" Type="int" Nullable="false" />
           <Property Name="PRECIO" Type="int" Nullable="false" />
           <Property Name="DESCUENTO" Type="int" />
@@ -90,7 +91,19 @@
           <Property Name="ID_PRODUCTO" Type="int" Nullable="false" />
           <Property Name="ID_USUARIO" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__DIRECCION__ID_CA__32E0915F">
+        <Association Name="FK__CANTONES__ID_PRO__46E78A0C">
+          <End Role="PROVINCIAS" Type="Self.PROVINCIAS" Multiplicity="1" />
+          <End Role="CANTONES" Type="Self.CANTONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVINCIAS">
+              <PropertyRef Name="ID_PROVINCIA" />
+            </Principal>
+            <Dependent Role="CANTONES">
+              <PropertyRef Name="ID_PROVINCIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DIRECCION__ID_CA__4AB81AF0">
           <End Role="CANTONES" Type="Self.CANTONES" Multiplicity="1" />
           <End Role="DIRECCIONES" Type="Self.DIRECCIONES" Multiplicity="*" />
           <ReferentialConstraint>
@@ -102,7 +115,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DIRECCION__ID_PR__31EC6D26">
+        <Association Name="FK__DIRECCION__ID_PR__49C3F6B7">
           <End Role="PROVINCIAS" Type="Self.PROVINCIAS" Multiplicity="1" />
           <End Role="DIRECCIONES" Type="Self.DIRECCIONES" Multiplicity="*" />
           <ReferentialConstraint>
@@ -184,11 +197,15 @@
           <EntitySet Name="ROLES" EntityType="Self.ROLES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VENTA" EntityType="Self.VENTA" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__DIRECCION__ID_CA__32E0915F" Association="Self.FK__DIRECCION__ID_CA__32E0915F">
+          <AssociationSet Name="FK__CANTONES__ID_PRO__46E78A0C" Association="Self.FK__CANTONES__ID_PRO__46E78A0C">
+            <End Role="PROVINCIAS" EntitySet="PROVINCIAS" />
+            <End Role="CANTONES" EntitySet="CANTONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DIRECCION__ID_CA__4AB81AF0" Association="Self.FK__DIRECCION__ID_CA__4AB81AF0">
             <End Role="CANTONES" EntitySet="CANTONES" />
             <End Role="DIRECCIONES" EntitySet="DIRECCIONES" />
           </AssociationSet>
-          <AssociationSet Name="FK__DIRECCION__ID_PR__31EC6D26" Association="Self.FK__DIRECCION__ID_PR__31EC6D26">
+          <AssociationSet Name="FK__DIRECCION__ID_PR__49C3F6B7" Association="Self.FK__DIRECCION__ID_PR__49C3F6B7">
             <End Role="PROVINCIAS" EntitySet="PROVINCIAS" />
             <End Role="DIRECCIONES" EntitySet="DIRECCIONES" />
           </AssociationSet>
@@ -223,8 +240,10 @@
             <PropertyRef Name="ID_CANTON" />
           </Key>
           <Property Name="ID_CANTON" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_PROVINCIA" Type="Int32" Nullable="false" />
           <Property Name="CANTON" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="DIRECCIONES" Relationship="Self.FK__DIRECCION__ID_CA__32E0915F" FromRole="CANTONES" ToRole="DIRECCIONES" />
+          <NavigationProperty Name="PROVINCIAS" Relationship="Self.FK__CANTONES__ID_PRO__46E78A0C" FromRole="CANTONES" ToRole="PROVINCIAS" />
+          <NavigationProperty Name="DIRECCIONES" Relationship="Self.FK__DIRECCION__ID_CA__4AB81AF0" FromRole="CANTONES" ToRole="DIRECCIONES" />
         </EntityType>
         <EntityType Name="CATEGORIAS">
           <Key>
@@ -243,8 +262,8 @@
           <Property Name="ID_CANTON" Type="Int32" Nullable="false" />
           <Property Name="DIRECCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CODIGO_POSTAL" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="CANTONES" Relationship="Self.FK__DIRECCION__ID_CA__32E0915F" FromRole="DIRECCIONES" ToRole="CANTONES" />
-          <NavigationProperty Name="PROVINCIAS" Relationship="Self.FK__DIRECCION__ID_PR__31EC6D26" FromRole="DIRECCIONES" ToRole="PROVINCIAS" />
+          <NavigationProperty Name="CANTONES" Relationship="Self.FK__DIRECCION__ID_CA__4AB81AF0" FromRole="DIRECCIONES" ToRole="CANTONES" />
+          <NavigationProperty Name="PROVINCIAS" Relationship="Self.FK__DIRECCION__ID_PR__49C3F6B7" FromRole="DIRECCIONES" ToRole="PROVINCIAS" />
         </EntityType>
         <EntityType Name="MARCAS">
           <Key>
@@ -263,7 +282,7 @@
           <Property Name="ID_MARCA" Type="Int32" Nullable="false" />
           <Property Name="NOMBRE_PRODUCTO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IMAGEN_PRODUCTO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="DESCRIPCION_PRODUCTO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPCION_PRODUCTO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="CANTIDAD_PRODCUTO" Type="Int32" Nullable="false" />
           <Property Name="PRECIO" Type="Int32" Nullable="false" />
           <Property Name="DESCUENTO" Type="Int32" />
@@ -278,7 +297,8 @@
           </Key>
           <Property Name="ID_PROVINCIA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PROVINCIA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="DIRECCIONES" Relationship="Self.FK__DIRECCION__ID_PR__31EC6D26" FromRole="PROVINCIAS" ToRole="DIRECCIONES" />
+          <NavigationProperty Name="CANTONES" Relationship="Self.FK__CANTONES__ID_PRO__46E78A0C" FromRole="PROVINCIAS" ToRole="CANTONES" />
+          <NavigationProperty Name="DIRECCIONES" Relationship="Self.FK__DIRECCION__ID_PR__49C3F6B7" FromRole="PROVINCIAS" ToRole="DIRECCIONES" />
         </EntityType>
         <EntityType Name="ROLES">
           <Key>
@@ -317,7 +337,19 @@
           <NavigationProperty Name="PRODUCTOS" Relationship="Self.FK__VENTA__ID_PRODUC__3B75D760" FromRole="VENTA" ToRole="PRODUCTOS" />
           <NavigationProperty Name="USUARIOS" Relationship="Self.FK__VENTA__ID_USUARI__3C69FB99" FromRole="VENTA" ToRole="USUARIOS" />
         </EntityType>
-        <Association Name="FK__DIRECCION__ID_CA__32E0915F">
+        <Association Name="FK__CANTONES__ID_PRO__46E78A0C">
+          <End Role="PROVINCIAS" Type="Self.PROVINCIAS" Multiplicity="1" />
+          <End Role="CANTONES" Type="Self.CANTONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROVINCIAS">
+              <PropertyRef Name="ID_PROVINCIA" />
+            </Principal>
+            <Dependent Role="CANTONES">
+              <PropertyRef Name="ID_PROVINCIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DIRECCION__ID_CA__4AB81AF0">
           <End Role="CANTONES" Type="Self.CANTONES" Multiplicity="1" />
           <End Role="DIRECCIONES" Type="Self.DIRECCIONES" Multiplicity="*" />
           <ReferentialConstraint>
@@ -341,7 +373,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DIRECCION__ID_PR__31EC6D26">
+        <Association Name="FK__DIRECCION__ID_PR__49C3F6B7">
           <End Role="PROVINCIAS" Type="Self.PROVINCIAS" Multiplicity="1" />
           <End Role="DIRECCIONES" Type="Self.DIRECCIONES" Multiplicity="*" />
           <ReferentialConstraint>
@@ -411,7 +443,11 @@
           <EntitySet Name="ROLES" EntityType="Self.ROLES" />
           <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" />
           <EntitySet Name="VENTA" EntityType="Self.VENTA" />
-          <AssociationSet Name="FK__DIRECCION__ID_CA__32E0915F" Association="Self.FK__DIRECCION__ID_CA__32E0915F">
+          <AssociationSet Name="FK__CANTONES__ID_PRO__46E78A0C" Association="Self.FK__CANTONES__ID_PRO__46E78A0C">
+            <End Role="PROVINCIAS" EntitySet="PROVINCIAS" />
+            <End Role="CANTONES" EntitySet="CANTONES" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DIRECCION__ID_CA__4AB81AF0" Association="Self.FK__DIRECCION__ID_CA__4AB81AF0">
             <End Role="CANTONES" EntitySet="CANTONES" />
             <End Role="DIRECCIONES" EntitySet="DIRECCIONES" />
           </AssociationSet>
@@ -419,7 +455,7 @@
             <End Role="CATEGORIAS" EntitySet="CATEGORIAS" />
             <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
           </AssociationSet>
-          <AssociationSet Name="FK__DIRECCION__ID_PR__31EC6D26" Association="Self.FK__DIRECCION__ID_PR__31EC6D26">
+          <AssociationSet Name="FK__DIRECCION__ID_PR__49C3F6B7" Association="Self.FK__DIRECCION__ID_PR__49C3F6B7">
             <End Role="PROVINCIAS" EntitySet="PROVINCIAS" />
             <End Role="DIRECCIONES" EntitySet="DIRECCIONES" />
           </AssociationSet>
@@ -450,6 +486,7 @@
             <EntityTypeMapping TypeName="TiendaVideojuegosModel.CANTONES">
               <MappingFragment StoreEntitySet="CANTONES">
                 <ScalarProperty Name="ID_CANTON" ColumnName="ID_CANTON" />
+                <ScalarProperty Name="ID_PROVINCIA" ColumnName="ID_PROVINCIA" />
                 <ScalarProperty Name="CANTON" ColumnName="CANTON" />
               </MappingFragment>
             </EntityTypeMapping>

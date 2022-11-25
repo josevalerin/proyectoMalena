@@ -118,10 +118,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Clases\ProductoClase.cs" />
-    <Compile Include="Clases\UsuarioClase.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PRODUCTOSController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -194,8 +193,8 @@
     <Content Include="Imagenes\pexels-lucie-liz-3165335.jpg" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
       <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -268,15 +267,15 @@
     <Content Include="Views\Shared\formUsuario.cshtml" />
     <Content Include="Views\Usuario\InicioSesion.cshtml" />
     <Content Include="Views\Usuario\Registro.cshtml" />
-    <Content Include="Views\Admin\Producto.cshtml" />
-    <Content Include="Views\Admin\GuardarProducto.cshtml" />
-    <Content Include="Views\Admin\ModificarProducto.cshtml" />
-    <Content Include="Views\Admin\DetalleProducto.cshtml" />
-    <Content Include="Views\Admin\EliminarProducto.cshtml" />
+    <Content Include="Views\PRODUCTOS\Create.cshtml" />
+    <Content Include="Views\PRODUCTOS\Delete.cshtml" />
+    <Content Include="Views\PRODUCTOS\Details.cshtml" />
+    <Content Include="Views\PRODUCTOS\Edit.cshtml" />
+    <Content Include="Views\PRODUCTOS\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Producto\" />
+    <Folder Include="Clases\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
