@@ -1,118 +1,141 @@
-﻿@{
+﻿@model IEnumerable<TiendaVideojuegos.Models.PRODUCTOS>
+
+@{
     ViewBag.Title = "Home Page";
 }
 
- <div class="col-8  Destacados-categorias">
+<div class="col-8  Destacados-categorias">
 
-                <div class="col-12">
-                    <div class="col-12 centrar">
-                        <h2>Destacado</h2>
-                    </div>
-                    <div class="col-12 centrar">
-                        <div class="Destacado-card filtro">
-                            <img src="../pexels-soumil-kumar-735911.jpg" alt="...">
-                            <div class="Destacado-card-texto">
-                                Los mejores juegos
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="categorias">
-                    <div class="col-12 centrar">
-                        <h2>Categoria</h2>
-                    </div>
-                    <div class="col-12 centrar">
-                        <article class="col-4">
-                            <div class="Producto">
-                                <img src="../Palceholder_Image.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <p class="card-text">Titulo</p>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="col-4">
-                            <div class="Producto">
-                                <img src="../Palceholder_Image.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <p class="card-text">Titulo</p>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="col-4">
-                            <div class="Producto">
-                                <img src="../Palceholder_Image.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <p class="card-text">Titulo</p>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-
-                <div class="categorias">
-                    <div class="col-12 centrar">
-                        <h2>Categoria</h2>
-                    </div>
-                    <div class="col-12 centrar">
-                        <article class="col-4">
-                            <div class="Producto">
-                                <img src="../Palceholder_Image.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <p class="card-text">Titulo</p>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="col-4">
-                            <div class="Producto">
-                                <img src="../Palceholder_Image.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <p class="card-text">Titulo</p>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="col-4">
-                            <div class="Producto">
-                                <img src="../Palceholder_Image.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <p class="card-text">Titulo</p>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
+    <div class="col-12">
+        <div class="col-12 centrar">
+            <h2>Destacado</h2>
+        </div>
+        <div class="col-12 centrar">
+            <div class="Destacado-card filtro">
+                <img src="~/Imagenes/pexels-lucie-liz-3165335.jpg" alt="...">
+                <div class="Destacado-card-texto">
+                    Los mejores juegos
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div class="col-4 Descuentos">
+    <div class="categorias">
+        <div class="col-12 centrar">
+            <h2>Videojuegos</h2>
+        </div>
 
-                <div class="col-12 centrar">
-                    <h2>Descuentos</h2>
-                </div>
+        <div class="col-12 centrar">
 
-                <article class="col-12 centrar">
-                    <div class="Producto-descuento">
-                        <div class="Producto-Img">
-                            <img src="../Palceholder_Image.jpg" class="card-img-top" alt="...">
+            @foreach (var item in Model)
+            {
+
+                var imga = item.IMAGEN_PRODUCTO;
+
+                if (item.ID_CATEGORIA == 1)
+                {
+                    <article class="col-4">
+                        <div class="Producto">
+                            <img src="@item.IMAGEN_PRODUCTO" class="card-img-top" alt="...">
+                         <div class="container Producto-info">
+                        <div class="row text-center">
+                            <div class="col" id="titulo"><a>@Html.ActionLink(item.NOMBRE_PRODUCTO, "Details", new { id = item.ID_PRODUCTO })</a></div>
                         </div>
-                        <div class="card-body">
-                            <p class="card-text">Titulo</p>
+                        <div class="row text-center">
+                            <div class="col" id="precio">$@item.PRECIO</div>
+                        </div>
+                        </div>
+                        </div>
+                    </article>
+                }
+            }
+        </div>
+    </div>
+
+    <div class="categorias">
+        <div class="col-12 centrar">
+            <h2>Consolas</h2>
+        </div>
+        <div class="col-12 centrar">
+            @foreach (var item in Model)
+            {
+                
+                if (item.ID_CATEGORIA == 2)
+                {
+                <article class="col-4">
+                    <div class="Producto">
+                        <img src="@item.IMAGEN_PRODUCTO" class="card-img-top" alt="...">
+                        <div class="container Producto-info">
+                            <div class="row text-center">
+                                <div class="col" id="titulo"><a>@Html.ActionLink(item.NOMBRE_PRODUCTO, "Details", new { id = item.ID_PRODUCTO })</a></div>
+                            </div>
+                            <div class="row text-center">
+                                <div class="col" id="precio">$@item.PRECIO</div>
+                            </div>
                         </div>
                     </div>
                 </article>
+                }
+            }
+        </div>
+    </div>
 
-                <article class="col-12 centrar">
-                    <div class="Producto-descuento">
-                        <div class="Producto-Img">
-                            <img src="../Palceholder_Image.jpg" class="card-img-top" alt="...">
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">Titulo</p>
+    <div class="categorias">
+        <div class="col-12 centrar">
+            <h2>Accesorios</h2>
+        </div>
+        <div class="col-12 centrar">
+            @foreach (var item in Model)
+            {
+                if (item.ID_CATEGORIA == 3)
+                {
+                <article class="col-4">
+                    <div class="Producto">
+                        <img src="@item.IMAGEN_PRODUCTO" class="card-img-top" alt="...">
+                        <div class="container Producto-info">
+                            <div class="row text-center">
+                                <div class="col" id="titulo"><a>@Html.ActionLink(item.NOMBRE_PRODUCTO, "Details", new { id = item.ID_PRODUCTO })</a></div>
+                            </div>
+                            <div class="row text-center">
+                                <div class="col" id="precio">$@item.PRECIO</div>
+                            </div>
                         </div>
                     </div>
                 </article>
+                }
+            }
+        </div>
+    </div>
 
+</div>
+
+<div class="col-4 Descuentos">
+
+    <div class="col-12 centrar">
+        <h2>Descuentos</h2>
+    </div>
+
+    @foreach (var item in Model)
+    {
+
+        if (item.DESCUENTO > 0)
+        {
+        <article class="col-12 centrar">
+            <div class="Producto Producto-descuento">
+                <img src="@item.IMAGEN_PRODUCTO" class="card-img-top" alt="...">
+                <div class="container Producto-info">
+                    <div class="row text-center">
+                        <div class="col" id="titulo"><a>@Html.ActionLink(item.NOMBRE_PRODUCTO, "Details", new { id = item.ID_PRODUCTO })</a></div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col" id="precio">$@item.PRECIO</div>
+                    </div>
+                </div>
             </div>
+        </article>
+        }
+
+    }
+
+
+</div>

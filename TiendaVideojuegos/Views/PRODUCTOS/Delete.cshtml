@@ -4,7 +4,7 @@
     ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
-<div class="container text-center form">
+@*<div class="container text-center form">
     <div class="row form-body">
         <div class="col">
             <h2>Eliminar producto</h2>
@@ -101,7 +101,118 @@
             }
         </div>
     </div>
-</div>
+</div>*@
 
+
+<div class="container text-center form">
+    <div class="row form-body">
+        <div class="col">
+            <h2>Desea borrar el siguiente porducto</h2>
+        </div>
+    </div>
+    <div class="row  form-body">
+        <div class="col Formulario-admin-contenido">
+            <dt>
+                <label>Nombre</label>
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NOMBRE_PRODUCTO)
+            </dd>
+
+            <dt>
+                <label>Imagen</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IMAGEN_PRODUCTO)
+            </dd>
+
+            <dt>
+                <label>Cantidad Disponible</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CANTIDAD_PRODCUTO)
+            </dd>
+
+            <dt>
+                <label>Descripcion</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DESCRIPCION_PRODUCTO)
+            </dd>
+
+
+        </div>
+        <div class="col Formulario-admin-contenido">
+            <dt>
+                <label>Precio</label>
+            </dt>
+
+            <dd>
+                $@Html.DisplayFor(model => model.PRECIO)
+            </dd>
+
+            <dt>
+                <label>Descuento</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DESCUENTO)
+            </dd>
+
+            <dt>
+                <label>Categoria</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CATEGORIAS.NOMBRE_CATEGORIA)
+            </dd>
+
+            <dt>
+                <label>Marca</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MARCAS.NOMBRE_MARCA)
+            </dd>
+
+            <dt>
+                <label>Destacado</label>
+            </dt>
+
+            <dd>
+                @if (Model.DESTACADO == true)
+                {
+                    <p>Aparece en el area de producto destacados</p>
+                }
+
+                @if (Model.DESTACADO == false)
+                {
+                    <p>No Aparece en el area de producto destacados</p>
+                }
+                @if (Model.DESTACADO == null)
+                {
+                    <p>Campo vacio</p>
+                }
+            </dd>
+
+        </div>
+    </div>
+    <div class="row form-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="col">
+                <button class="btn btn-info">
+                    @Html.ActionLink("Retornar", "Index")
+                </button>
+                <input type="submit" value="Borrar producto" class="btn btn-danger" />
+            </div>
+        }
+    </div>
+        
+</div>
    
 

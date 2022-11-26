@@ -14,15 +14,14 @@
     <div class="row  form-body">
         <div class="col Formulario-admin-contenido">
             <dt>
-                @Html.DisplayNameFor(model => model.NOMBRE_PRODUCTO)
+                <label>Nombre</label>
             </dt>
-
             <dd>
                 @Html.DisplayFor(model => model.NOMBRE_PRODUCTO)
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.IMAGEN_PRODUCTO)
+                <label>Imagen</label>
             </dt>
 
             <dd>
@@ -30,33 +29,34 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.DESCRIPCION_PRODUCTO)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.DESCRIPCION_PRODUCTO)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.CANTIDAD_PRODCUTO)
+                <label>Cantidad Disponible</label>
             </dt>
 
             <dd>
                 @Html.DisplayFor(model => model.CANTIDAD_PRODCUTO)
             </dd>
 
-        </div>
-        <div class="col Formulario-admin-contenido">
             <dt>
-                @Html.DisplayNameFor(model => model.PRECIO)
+                <label>Descripcion</label>
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.PRECIO)
+                @Html.DisplayFor(model => model.DESCRIPCION_PRODUCTO)
+            </dd>
+
+
+        </div>
+        <div class="col Formulario-admin-contenido">
+            <dt>
+                <label>Precio</label>
+            </dt>
+
+            <dd>
+                $@Html.DisplayFor(model => model.PRECIO)
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.DESCUENTO)
+                <label>Descuento</label>
             </dt>
 
             <dd>
@@ -64,15 +64,7 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.DESTACADO)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.DESTACADO)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.CATEGORIAS.NOMBRE_CATEGORIA)
+                <label>Categoria</label>
             </dt>
 
             <dd>
@@ -80,24 +72,44 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.MARCAS.NOMBRE_MARCA)
+                <label>Marca</label>
             </dt>
 
             <dd>
                 @Html.DisplayFor(model => model.MARCAS.NOMBRE_MARCA)
             </dd>
 
+            <dt>
+                <label>Destacado</label>
+            </dt>
+
+            <dd>
+                @if (Model.DESTACADO == true)
+                {
+                    <p>Aparece en el area de producto destacados</p>
+                }
+
+                @if (Model.DESTACADO == false)
+                {
+                    <p>No Aparece en el area de producto destacados</p>
+                }
+                @if(Model.DESTACADO == null) {
+                    <p>Campo vacio</p>
+                }
+            </dd>
+
         </div>
     </div>
     <div class="row form-body">
         <div class="col">
-            <p>
-                @Html.ActionLink("Edit", "Edit", new { id = Model.ID_PRODUCTO }) |
-                @Html.ActionLink("Back to List", "Index")
-            </p>
+            <button class="btn btn-info">
+                @Html.ActionLink("Retornar", "Index")
+            </button>
+            <button class="btn btn-success">
+                @Html.ActionLink("Editar", "Edit", new { id = Model.ID_PRODUCTO })
+            </button>
         </div>
     </div>
 </div>
-
 
 

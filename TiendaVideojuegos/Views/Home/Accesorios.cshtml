@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<TiendaVideojuegos.Models.PRODUCTOS>
 @{
     ViewBag.Title = "Accesorios";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,32 +12,25 @@
             <h2>Productos</h2>
         </div>
         <div class="col-12 centrar">
-            <article class="col-4">
-                <div class="Producto">
-                    <img src="../Palceholder_Image.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Titulo</p>
-                    </div>
-                </div>
-            </article>
+            @foreach (var item in Model)
+            {
 
-            <article class="col-4">
-                <div class="Producto">
-                    <img src="../Palceholder_Image.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Titulo</p>
-                    </div>
-                </div>
-            </article>
 
-            <article class="col-4">
-                <div class="Producto">
-                    <img src="../Palceholder_Image.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Titulo</p>
+
+                <article class="col-4">
+                    <div class="Producto">
+                        <img src="@item.IMAGEN_PRODUCTO" class="card-img-top" alt="...">
+                        <div class="container Producto-info">
+                            <div class="row text-center">
+                                <div class="col" id="titulo"><a>@Html.ActionLink(item.NOMBRE_PRODUCTO, "Details", new { id = item.ID_PRODUCTO })</a></div>
+                            </div>
+                            <div class="row text-center">
+                                <div class="col" id="precio">$@item.PRECIO</div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </article>
+                </article>
+            }
         </div>
     </div>
 
@@ -49,27 +42,29 @@
         <h2>Descuentos</h2>
     </div>
 
-    <article class="col-12 centrar">
-        <div class="Producto-descuento">
-            <div class="Producto-Img">
-                <img src="../Palceholder_Image.jpg" class="card-img-top" alt="...">
-            </div>
-            <div class="card-body">
-                <p class="card-text">Titulo</p>
-            </div>
-        </div>
-    </article>
+    @foreach (var item in Model)
+    {
+        if (item.DESCUENTO > 0)
+        {
 
-    <article class="col-12 centrar">
-        <div class="Producto-descuento">
-            <div class="Producto-Img">
-                <img src="../Palceholder_Image.jpg" class="card-img-top" alt="...">
-            </div>
-            <div class="card-body">
-                <p class="card-text">Titulo</p>
-            </div>
-        </div>
-    </article>
+            <article class="col-4">
+                <div class="Producto Producto-descuento">
+                    <img src="@item.IMAGEN_PRODUCTO" class="card-img-top" alt="...">
+                    <div class="container Producto-info">
+                        <div class="row text-center">
+                            <div class="col" id="titulo"><a>@Html.ActionLink(item.NOMBRE_PRODUCTO, "Details", new { id = item.ID_PRODUCTO })</a></div>
+                        </div>
+                        <div class="row text-center">
+                            <div class="col" id="precio">$@item.PRECIO</div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        }
+
+
+    }
 
 </div>
 

@@ -1,0 +1,29 @@
+﻿@model TiendaVideojuegos.Models.PRODUCTOS
+@{
+    ViewBag.Title = "Details";
+}
+
+   
+    <div class="container Producto-detalles">
+        <div class="row">
+            <div class="col-4">
+                <img src="@Model.IMAGEN_PRODUCTO" alt="Imagen del producto">
+            </div>
+            <div class="col-8">
+                <label hidden>@Model.ID_PRODUCTO</label>
+                <h2 id="Titulo">@Model.NOMBRE_PRODUCTO</h2>
+                <p id="Descripcion">@Model.DESCRIPCION_PRODUCTO</p>
+                <p id="Precio">$@Model.PRECIO</p>
+                <div class="row">
+                    <div class="col-3 cantidad-producto">
+                        <label for="">Cantidad:</label>
+                        <input type="number" name="" id="" value="1">
+                    </div>
+                    <div class="col-9">
+                        <button class="btn-carrito">Agregar Carrito</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
