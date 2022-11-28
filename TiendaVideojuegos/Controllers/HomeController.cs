@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using TiendaVideojuegos.Models;
-using System.Data.Entity;
 using System.Net;
+using System.Web.Mvc;
+using System.Web.Security;
+using TiendaVideojuegos.Models;
 
 namespace TiendaVideojuegos.Controllers
 {
@@ -17,6 +15,59 @@ namespace TiendaVideojuegos.Controllers
         {
             var productos = db.PRODUCTOS.Include(p => p.CATEGORIAS).Include(p => p.MARCAS);
             return View(productos.ToList());
+        }
+
+
+        public ActionResult InicioSesion()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public ActionResult InicioSesion(USUARIOS user)
+        {
+            if (ModelState.IsValid)
+            {
+                bool IsValidUser = db.USUARIOS
+               .Any(u => u.CORREO_ELECTRONICO.ToLower() == user
+               .CORREO_ELECTRONICO.ToLower() && user
+               .CLAVE == user.CLAVE);
+
+                if (IsValidUser)
+                {
+                    FormsAuthentication.SetAuthCookie(user.CORREO_ELECTRONICO, false);
+                    return RedirectToAction("Index");
+                }
+            }
+            ModelState.AddModelError("", "invalid Username or Password");
+            return View();
+        }
+
+        public ActionResult Registro()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Registro(USUARIOS registerUser)
+        {
+            if (ModelState.IsValid)
+            {
+                registerUser.ID_ROL = 2;
+                db.USUARIOS.Add(registerUser);
+                db.SaveChanges();
+                return RedirectToAction("InicioSesion");
+
+            }
+
+            return View();
+        }
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index");
         }
 
         public ActionResult Details(int? id)

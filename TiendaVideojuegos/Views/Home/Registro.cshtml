@@ -1,0 +1,42 @@
+﻿@model TiendaVideojuegos.Models.USUARIOS
+
+@{
+    ViewBag.Title = "Registro";
+    Layout = "~/Views/Shared/formUsuario.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="Formulario-encabezado">
+        <h2>Crea una cuenta</h2>
+        <br>
+        <h4>Registrate para comprar tus productos favoritos</h4>
+    </div>
+    <br>
+    <form class="Formulario-Contenido">
+
+        @Html.TextBoxFor(model => model.NOMBRE_USUARIO, new { @class = "form-control", placeholder = "Crear Usuario" })
+        @Html.ValidationMessageFor(model => model.NOMBRE_USUARIO)
+        <br>
+        @Html.TextBoxFor(model => model.NOMBRE_COMPLETO, new { @class = "form-control", placeholder = "Inserte nombre completo" })
+        @Html.ValidationMessageFor(model => model.NOMBRE_COMPLETO)
+        <br>
+        @Html.TextBoxFor(model => model.TELEFONO, new { @class = "form-control", placeholder = "Inserte numero telefonico" })
+        @Html.ValidationMessageFor(model => model.TELEFONO)
+        <br>
+        @Html.TextBoxFor(model => model.CEDULA, new { @class = "form-control", placeholder = "Inserte su cedula" })
+        @Html.ValidationMessageFor(model => model.CEDULA)
+        <br>
+        @Html.TextBoxFor(model => model.CORREO_ELECTRONICO, new { @class = "form-control", placeholder = "Inserte correo electronico" })
+        @Html.ValidationMessageFor(model => model.CORREO_ELECTRONICO)
+
+        <br>
+        @Html.PasswordFor(model => model.CLAVE, new { @class = "form-control", placeholder = "Crear contraseña" })
+        @Html.ValidationMessageFor(model => model.CLAVE)
+        <br>
+        <button type="submit" class="btn btn-primary rounded-0">Iniciar sesion</button>
+        <br>
+        <p><a>@Html.ActionLink("Ya tienes una cuenta", "InicioSesion", "Home")</a></p>
+
+    </form>
+}

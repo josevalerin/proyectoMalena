@@ -265,8 +265,8 @@
     <Content Include="Views\Home\Accesorios.cshtml" />
     <Content Include="Views\Home\Videojuegos.cshtml" />
     <Content Include="Views\Shared\formUsuario.cshtml" />
-    <Content Include="Views\Usuario\InicioSesion.cshtml" />
-    <Content Include="Views\Usuario\Registro.cshtml" />
+    <Content Include="Views\Home\InicioSesion.cshtml" />
+    <Content Include="Views\Home\Registro.cshtml" />
     <Content Include="Views\PRODUCTOS\Create.cshtml" />
     <Content Include="Views\PRODUCTOS\Delete.cshtml" />
     <Content Include="Views\PRODUCTOS\Details.cshtml" />
@@ -277,6 +277,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Clases\" />
+    <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
