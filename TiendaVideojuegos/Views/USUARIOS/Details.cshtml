@@ -4,81 +4,109 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
-<br>
 
 <div class="container text-center form">
     <div class="row form-body">
         <div class="col">
-            <h2>Detalles producto</h2>
+            <h2>Informacion del Usuario</h2>
         </div>
     </div>
     <div class="row  form-body">
-        <div class="col Formulario-admin-contenido">
-            <dt>
-                ID dirección
-            </dt>
+        <div class="col-5 Formulario-admin-contenido">
 
-            <dd>
-                @Html.DisplayFor(model => model.ID_DIRECCION)
-            </dd>
+            <DIV style="border-bottom: ridge; border-width: medium; ">
 
-            <dt>
-                Cedula
-            </dt>
+                <dt>
+                    ID dirección
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.CEDULA)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.ID_DIRECCION)
+                </dd>
+            </DIV>
+            <br>
+            <DIV style="border-bottom: ridge; border-width: medium; ">
+                <dt>
+                    Cedula
+                </dt>
 
-            <dt>
-                Nombre de usuario
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CEDULA)
+                </dd>
+            </DIV>
+            <br>
+            <DIV style="border-bottom: ridge; border-width: medium; ">
 
-            <dd>
-                @Html.DisplayFor(model => model.NOMBRE_USUARIO)
-            </dd>
+                <dt>
+                    Nombre de usuario
+                </dt>
 
-            <dt>
-                Clave
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.NOMBRE_USUARIO)
+                </dd>
+            </DIV>
+            <br>
+            <DIV style="border-bottom: ridge; border-width: medium; ">
 
-            <dd>
-                @Html.DisplayFor(model => model.CLAVE)
-            </dd>
+                <dt>
+                    Clave
+                </dt>
 
-            <dt>
-                Nombre completo
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CLAVE)
+                </dd>
+            </DIV>
+            <br>
 
-            <dd>
-                @Html.DisplayFor(model => model.NOMBRE_COMPLETO)
-            </dd>
+            <DIV style="border-bottom: ridge; border-width: medium; ">
 
-            <dt>
-                Correo electronico
-            </dt>
+                <dt>
+                    Nombre completo
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.CORREO_ELECTRONICO)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.NOMBRE_COMPLETO)
+                </dd>
+            </DIV>
+            <br>
 
-            <dt>
-                Telefono
-            </dt>
+            <DIV style="border-bottom: ridge; border-width: medium; ">
 
-            <dd>
-                @Html.DisplayFor(model => model.TELEFONO)
-            </dd>
+                <dt>
+                    Correo electronico
+                </dt>
 
-            <dt>
-                Rol
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CORREO_ELECTRONICO)
+                </dd>
+            </DIV>
+            <br>
 
-            <dd>
-                @Html.DisplayFor(model => model.ROLES.ROL)
-            </dd>
+            <DIV style="border-bottom: ridge; border-width: medium; ">
 
-            </dl>
+                <dt>
+                    Telefono
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.TELEFONO)
+                </dd>
+            </DIV>
+            <br>
+
+            <DIV style="border-bottom: ridge; border-width: medium; ">
+
+                <dt>
+                    Rol
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ROLES.ROL)
+                </dd>
+
+                </dl>
+            </DIV>
+            <br>
+
         </div>
     </div>
 
@@ -86,10 +114,12 @@
         <div class="col">
             <button class="btn btn-info">
                 @Html.ActionLink("Retornar", "Index")
-            </button>
+            </button> |
             <button class="btn btn-success">
-                @Html.ActionLink("Editar", "Edit", new { id = Model.ID_USUARIO})
+                @Html.ActionLink("Editar", "Edit", new { id = Model.ID_USUARIO })
             </button>
         </div>
     </div>
+    <br>
+
 </div>

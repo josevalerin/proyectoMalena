@@ -5,85 +5,121 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>USUARIOS</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ID_DIRECCION)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ID_DIRECCION)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CEDULA)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CEDULA)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NOMBRE_USUARIO)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NOMBRE_USUARIO)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CLAVE)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CLAVE)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NOMBRE_COMPLETO)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NOMBRE_COMPLETO)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CORREO_ELECTRONICO)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CORREO_ELECTRONICO)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TELEFONO)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TELEFONO)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ROLES.ROL)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ROLES.ROL)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+<div class="container text-center form">
+    <div class="row form-body">
+        <div class="col">
+            <h2>Desea borrar el siguiente usuario</h2>
         </div>
-    }
-</div>
+    </div>
+    <div class="row  form-body">
+        <div class="col-5 Formulario-admin-contenido">
+
+            <DIV style="border-bottom: ridge; border-width: medium; ">
+
+                <dt>
+                    ID dirección
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ID_DIRECCION)
+                </dd>
+            </DIV>
+            <br>
+            <DIV style="border-bottom: ridge; border-width: medium; ">
+                <dt>
+                    Cedula
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CEDULA)
+                </dd>
+            </DIV>
+            <br>
+            <DIV style="border-bottom: ridge; border-width: medium; ">
+
+                <dt>
+                    Nombre de usuario
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NOMBRE_USUARIO)
+                </dd>
+            </DIV>
+            <br>
+            <DIV style="border-bottom: ridge; border-width: medium; ">
+
+                <dt>
+                    Clave
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CLAVE)
+                </dd>
+            </DIV>
+            <br>
+
+            <DIV style="border-bottom: ridge; border-width: medium; ">
+
+                <dt>
+                    Nombre completo
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NOMBRE_COMPLETO)
+                </dd>
+            </DIV>
+            <br>
+
+            <DIV style="border-bottom: ridge; border-width: medium; ">
+
+                <dt>
+                    Correo electronico
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CORREO_ELECTRONICO)
+                </dd>
+            </DIV>
+            <br>
+
+            <DIV style="border-bottom: ridge; border-width: medium; ">
+
+                <dt>
+                    Telefono
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.TELEFONO)
+                </dd>
+            </DIV>
+            <br>
+
+            <DIV style="border-bottom: ridge; border-width: medium; ">
+
+                <dt>
+                    Rol
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ROLES.ROL)
+                </dd>
+
+                </dl>
+            </DIV>
+            <br>
+        </div>
+
+        <div class="row form-body">
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="col">
+                <button class="btn btn-info">
+                    @Html.ActionLink("Retornar", "Index")
+                </button> |
+                <input type="submit" value="Borrar usuario" class="btn btn-danger" />
+            </div>
+            }
+        </div>
+    </div>
