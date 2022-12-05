@@ -1,0 +1,52 @@
+﻿@model IEnumerable<TiendaVideojuegos.Models.VENTA>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<div class="tabla">
+    <h2>Ventas</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Fecha Venta
+                </th>
+                <th>
+                    Cantidad
+                </th>
+                <th>
+                    Precio
+                </th>
+                <th>
+                    Nombre Producto
+                </th>
+                <th>
+                   Usuario
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FECHA_VENTA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CANTIDAD)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PRECIO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PRODUCTOS.NOMBRE_PRODUCTO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.USUARIOS.CEDULA)
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
