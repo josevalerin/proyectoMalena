@@ -1,0 +1,95 @@
+﻿@model TiendaVideojuegos.Models.USUARIOS
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br>
+
+<div class="container text-center form">
+    <div class="row form-body">
+        <div class="col">
+            <h2>Detalles producto</h2>
+        </div>
+    </div>
+    <div class="row  form-body">
+        <div class="col Formulario-admin-contenido">
+            <dt>
+                ID dirección
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ID_DIRECCION)
+            </dd>
+
+            <dt>
+                Cedula
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CEDULA)
+            </dd>
+
+            <dt>
+                Nombre de usuario
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NOMBRE_USUARIO)
+            </dd>
+
+            <dt>
+                Clave
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CLAVE)
+            </dd>
+
+            <dt>
+                Nombre completo
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NOMBRE_COMPLETO)
+            </dd>
+
+            <dt>
+                Correo electronico
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CORREO_ELECTRONICO)
+            </dd>
+
+            <dt>
+                Telefono
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TELEFONO)
+            </dd>
+
+            <dt>
+                Rol
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ROLES.ROL)
+            </dd>
+
+            </dl>
+        </div>
+    </div>
+
+    <div class="row form-body">
+        <div class="col">
+            <button class="btn btn-info">
+                @Html.ActionLink("Retornar", "Index")
+            </button>
+            <button class="btn btn-success">
+                @Html.ActionLink("Editar", "Edit", new { id = Model.ID_USUARIO})
+            </button>
+        </div>
+    </div>
+</div>

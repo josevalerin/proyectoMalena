@@ -1,0 +1,82 @@
+﻿@model IEnumerable<TiendaVideojuegos.Models.USUARIOS>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br>
+<div class="tabla">
+    <h2>Usuarios</h2>
+    <p>
+        @Html.ActionLink("Agregar Usuario", "Create")
+    </p>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    ID dirección
+                </th>
+                <th>
+                    Cedula
+                </th>
+                <th>
+                    Nombre de usuario
+                </th>
+                <th>
+                    Clave
+                </th>
+                <th>
+                    Nombre completo
+                </th>
+                <th>
+                    Correo electronico
+                </th>
+                <th>
+                    Telefono
+                </th>
+                <th>
+                    Rol
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID_DIRECCION)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CEDULA)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NOMBRE_USUARIO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CLAVE)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NOMBRE_COMPLETO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CORREO_ELECTRONICO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TELEFONO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ROLES.ROL)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.ID_USUARIO }) |
+                        @Html.ActionLink("Detalles", "Details", new { id = item.ID_USUARIO }) |
+                        @Html.ActionLink("Borrar", "Delete", new { id = item.ID_USUARIO })
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
