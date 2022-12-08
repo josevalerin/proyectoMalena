@@ -45,7 +45,7 @@ namespace TiendaVideojuegos.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID_PRODUCTO,ID_CATEGORIA,ID_MARCA,NOMBRE_PRODUCTO,IMAGEN_PRODUCTO,DESCRIPCION_PRODUCTO,CANTIDAD_PRODCUTO,PRECIO,DESCUENTO,DESTACADO")] PRODUCTOS pRODUCTOS)
+        public ActionResult Create([Bind(Include = "ID_PRODUCTO,,DESCRIPCION_PRODUCTO,CANTIDAD_PRODCUTO,PRECIO,DESCUENTO,DESTACADO")] PRODUCTOS pRODUCTOS)
         {
             if (ModelState.IsValid)
             {

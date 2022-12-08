@@ -191,7 +191,6 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Imagenes\pexels-lucie-liz-3165335.jpg" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -262,9 +261,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\AdminLayout.cshtml" />
     <Content Include="Views\Admin\Admin.cshtml" />
-    <Content Include="Views\Home\Consolas.cshtml" />
-    <Content Include="Views\Home\Accesorios.cshtml" />
-    <Content Include="Views\Home\Videojuegos.cshtml" />
+    <Content Include="Views\Home\Colonias.cshtml" />
+    <Content Include="Views\Home\Ropa.cshtml" />
+    <Content Include="Views\Home\Lomasvendido.cshtml" />
     <Content Include="Views\Shared\formUsuario.cshtml" />
     <Content Include="Views\Home\InicioSesion.cshtml" />
     <Content Include="Views\Home\Registro.cshtml" />
@@ -280,6 +279,7 @@
     <Content Include="Views\USUARIOS\Details.cshtml" />
     <Content Include="Views\USUARIOS\Edit.cshtml" />
     <Content Include="Views\USUARIOS\Index.cshtml" />
+    <Content Include="Views\Home\Carrito.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<TiendaVideojuegos.Models.PRODUCTOS>
+@{
+    ViewBag.Title = "Accesorios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-8  Destacados-categorias">
+
+
+    <div class="productos">
+        <div class="col-12 centrar">
+            <h2>Productos</h2>
+        </div>
+        <div class="col-12 centrar">
+            <article class="col-4">
+                <div class="Producto">
+                    <img src="https://images.pexels.com/photos/52518/jeans-pants-blue-shop-52518.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="...">
+                    <div class="container Producto-info">
+                        <div class="row text-center">
+                            <div class="col" id="titulo"><a>Jeans</a></div>
+                        </div>
+                        <div class="row text-center">
+                            <div class="col" id="precio">Precio: $200</div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="col-4">
+                <div class="Producto">
+                    <img src="https://images.pexels.com/photos/996329/pexels-photo-996329.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="...">
+                    <div class="container Producto-info">
+                        <div class="row text-center">
+                            <div class="col" id="titulo"><a>Blusas</a></div>
+                        </div>
+                        <div class="row text-center">
+                            <div class="col" id="precio">Precio: $300</div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+
+</div>
+
+<div class="col-4 Descuentos">
+
+    <div class="col-12 centrar">
+        <h2>Descuentos</h2>
+    </div>
+
+    <article class="col-4" style= "margin-left">
+        <div class="Producto">
+            <img src="https://images.pexels.com/photos/1124465/pexels-photo-1124465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="...">
+            <div class="container Producto-info">
+                <div class="row text-center">
+                    <div class="col" id="titulo"><a>Blusas</a></div>
+                </div>
+                <div class="row text-center">
+                    <div class="col" id="precio">Descuento: %10</div>
+
+                    <div class="col" id="precio">$10</div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+</div>
+

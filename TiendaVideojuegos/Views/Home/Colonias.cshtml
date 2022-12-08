@@ -9,29 +9,40 @@
 
     <div class="productos">
         <div class="col-12 centrar">
-            <h2>Consolas</h2>
+            <h2>Productos</h2>
         </div>
         <div class="col-12 centrar">
-            @foreach (var item in Model)
-            {
+            
 
-                var imga = item.IMAGEN_PRODUCTO;
 
                 <article class="col-4">
                     <div class="Producto">
-                        <img src="@item.IMAGEN_PRODUCTO" class="card-img-top" alt="...">
+                        <img src="https://images.pexels.com/photos/3785784/pexels-photo-3785784.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="...">
                         <div class="container Producto-info">
                             <div class="row text-center">
-                                <div class="col" id="titulo"><a>@Html.ActionLink(item.NOMBRE_PRODUCTO, "Details", new { id = item.ID_PRODUCTO })</a></div>
+                                <div class="col" id="titulo"><a>GENERICA</a></div>
                             </div>
                             <div class="row text-center">
-                                <div class="col" id="precio">$@item.PRECIO</div>
+                                <div class="col" id="precio">Precio: $200</div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            <article class="col-4">
+                    <div class="Producto">
+                        <img src="https://images.pexels.com/photos/755992/pexels-photo-755992.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="...">
+                        <div class="container Producto-info">
+                            <div class="row text-center">
+                                <div class="col" id="titulo"><a>CHANEL</a></div>
+                            </div>
+                            <div class="row text-center">
+                                <div class="col" id="precio">Precio: $300</div>
                             </div>
                         </div>
                     </div>
                 </article>
 
-            }
+            
         </div>
     </div>
 

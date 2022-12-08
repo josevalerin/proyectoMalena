@@ -20,9 +20,7 @@
                 @Html.EditorFor(model => model.NOMBRE_PRODUCTO, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.NOMBRE_PRODUCTO, "", new { @class = "text-danger" })
 
-                <label>Imagen</label>
-                @Html.EditorFor(model => model.IMAGEN_PRODUCTO, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.IMAGEN_PRODUCTO, "", new { @class = "text-danger" })
+               
 
                 <label>Cantidad</label>
                 @Html.EditorFor(model => model.CANTIDAD_PRODCUTO, new { htmlAttributes = new { @class = "form-control" } })
@@ -42,14 +40,7 @@
                 @Html.EditorFor(model => model.DESCUENTO, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DESCUENTO, "", new { @class = "text-danger" })
 
-                <label>Marca</label>
-                @Html.DropDownList("ID_MARCA", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ID_MARCA, "", new { @class = "text-danger" })
-
-                <label>Categoria</label>
-                @Html.DropDownList("ID_CATEGORIA", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ID_CATEGORIA, "", new { @class = "text-danger" })
-
+               
                 <label>Destacado</label>
                 @Html.EditorFor(model => model.DESTACADO, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DESTACADO, "", new { @class = "text-danger" })

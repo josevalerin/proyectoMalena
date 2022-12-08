@@ -84,22 +84,27 @@ namespace TiendaVideojuegos.Controllers
             return View(productos);
         }
 
-        public ActionResult Consolas()
+        public ActionResult Colonias()
         {
-            var consolas = db.PRODUCTOS.Where(x => x.ID_CATEGORIA == 2);
-            return View(consolas.ToList());
+            var Colonias = db.PRODUCTOS.Where(x => x.ID_CATEGORIA == 2);
+            return View(Colonias.ToList());
         }
 
-        public ActionResult Accesorios()
+        public ActionResult Ropa()
         {
-            var accesorios = db.PRODUCTOS.Where(x => x.ID_CATEGORIA == 3);
-            return View(accesorios.ToList());
+            var Ropa = db.PRODUCTOS.Where(x => x.ID_CATEGORIA == 3);
+            return View(Ropa.ToList());
         }
 
-        public ActionResult Videojuegos()
+        public ActionResult Lomasvendido()
         {
-            var videojuegos = db.PRODUCTOS.Where(x => x.ID_CATEGORIA == 1);
-            return View(videojuegos);
+            var Lomasvendido = db.PRODUCTOS.Where(x => x.ID_CATEGORIA == 1);
+            return View(Lomasvendido);
+        }
+        public ActionResult Carrito()
+        {
+            var Carrito = db.PRODUCTOS.Where(x => x.ID_CATEGORIA == 1);
+            return View(Carrito);
         }
     }
 }

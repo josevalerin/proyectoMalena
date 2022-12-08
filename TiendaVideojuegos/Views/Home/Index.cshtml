@@ -12,9 +12,9 @@
         </div>
         <div class="col-12 centrar">
             <div class="Destacado-card filtro">
-                <img src="~/Imagenes/pexels-lucie-liz-3165335.jpg" alt="...">
+                <img src="https://images.pexels.com/photos/1488463/pexels-photo-1488463.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="...">
                 <div class="Destacado-card-texto">
-                    Los mejores juegos
+                    Los mejores productos
                 </div>
             </div>
         </div>
@@ -22,7 +22,7 @@
 
     <div class="categorias">
         <div class="col-12 centrar">
-            <h2>Videojuegos</h2>
+            <h2><a>@Html.ActionLink("Zapateria", "Lomasvendido", "Home")</a></h2>
         </div>
 
         <div class="col-12 centrar">
@@ -54,7 +54,7 @@
 
     <div class="categorias">
         <div class="col-12 centrar">
-            <h2>Consolas</h2>
+            <h2><a>@Html.ActionLink("Colonias", "Colonias", "Home")</a></h2>
         </div>
         <div class="col-12 centrar">
             @foreach (var item in Model)
@@ -82,7 +82,7 @@
 
     <div class="categorias">
         <div class="col-12 centrar">
-            <h2>Accesorios</h2>
+            <h2><a>@Html.ActionLink("Ropa", "Ropa", "Home")</a></h2>
         </div>
         <div class="col-12 centrar">
             @foreach (var item in Model)
@@ -115,27 +115,21 @@
         <h2>Descuentos</h2>
     </div>
 
-    @foreach (var item in Model)
-    {
+    <article class="col-4" style="margin-left">
+        <div class="Producto">
+            <img src="https://images.pexels.com/photos/1124465/pexels-photo-1124465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" alt="...">
+            <div class="container Producto-info">
+                <div class="row text-center">
+                    <div class="col" id="titulo"><a>Blusas</a></div>
+                </div>
+                <div class="row text-center">
+                    <div class="col" id="precio">Descuento: %10</div>
 
-        if (item.DESCUENTO > 0)
-        {
-        <article class="col-12 centrar">
-            <div class="Producto Producto-descuento">
-                <img src="@item.IMAGEN_PRODUCTO" class="card-img-top" alt="...">
-                <div class="container Producto-info">
-                    <div class="row text-center">
-                        <div class="col" id="titulo"><a>@Html.ActionLink(item.NOMBRE_PRODUCTO, "Details", new { id = item.ID_PRODUCTO })</a></div>
-                    </div>
-                    <div class="row text-center">
-                        <div class="col" id="precio">$@item.PRECIO</div>
-                    </div>
+                    <div class="col" id="precio">$10</div>
                 </div>
             </div>
-        </article>
-        }
-
-    }
+        </div>
+    </article>
 
 
 </div>

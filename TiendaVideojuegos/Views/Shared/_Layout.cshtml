@@ -16,14 +16,18 @@
                     @Html.ActionLink("Tienda", "Index", "Home", new { @id = "logo" })
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a>@Html.ActionLink("Videojuegos", "Videojuegos", "Home")</a>
+                            
+                            <li style="margin-left:60px">
+                                <a>Productos a eleguir:</a>
                             </li>
                             <li class="nav-item">
-                                <a>@Html.ActionLink("Consolas", "Consolas", "Home")</a>
+                                <a>@Html.ActionLink("Colonias", "Colonias", "Home")</a>
                             </li>
                             <li class="nav-item">
-                                <a>@Html.ActionLink("Accesorios", "Accesorios", "Home")</a>
+                                <a>@Html.ActionLink("Ropa", "Ropa", "Home")</a>
+
+                            </li><li class="nav-item">
+                                <a>@Html.ActionLink("Zapateria", "Lomasvendido", "Home")</a>
                             </li>
                         </ul>
                         <ul class="navbar-nav mb-2 mb-lg-0">
@@ -31,6 +35,8 @@
 
                             @if (User.Identity.IsAuthenticated)
                             {
+                                <li>@Html.ActionLink("Carro de compras", "Carrito", "Home")</li>
+
                                 <li>@Html.ActionLink("Cerrar Sesion", "Logout", "Home")</li>
                             }
                             else
@@ -57,7 +63,7 @@
                     <div class="col-6">
                         <h4 class="footer-heading">Proyecto</h4>
                         <p>
-                            Tienda en linea de video juegos, video consolas y accesorios. Basado en .Net Framework, C#.
+                            Tienda en linea. Basado en .Net Framework, C#.
                             Basado en el model mvc
                         </p>
                     </div>
@@ -65,11 +71,11 @@
                         <h4 class="footer-heading">Desarrollado por:</h4>
                         <ul class="list-unstyled">
                             <li>
-                                <a href="mailto:dvalle20343@ufide.ac.cr">Diego Valle Valle</a>
+                                <a href="mailto:dvalle20343@ufide.ac.cr">Leonel Azofeifa Hidalgo</a>
                                 - <a href="mailto:kquesada80309@ufide.ac.cr">Kaled Quesada Linares</a>
                             </li>
                             <li>
-                                <a href="mailto:esolis20542@ufide.ac.cr">Erick Solis Maltes</a> - <a href="mailto:jvalerin00631@ufide.ac.cr">Jose Valerin Perez</a>
+                                <a href="mailto:jvalerin00631@ufide.ac.cr">Jose Valerin Perez</a>
                             </li>
                         </ul>
                     </div>
@@ -86,7 +92,7 @@
                         </div>
                         <div class="col-4 text-md-right">
                             <p>
-                                Univerisad Fidelitas | Programacion Avanzada
+                                Univerisad Fidelitas | Programacion 
                             </p>
                         </div>
                     </div>
